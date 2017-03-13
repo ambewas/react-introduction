@@ -11,21 +11,7 @@ var App = React.createClass({
         {imageUrl: 'http://images.rapgenius.com/beb23feb3d0be493ef446e5a7abf61a2.600x600x1.jpg', title: 'Manon', artist: 'De Jeugd Van Tegenwoordig'},
         {imageUrl: 'http://cdn3.pitchfork.com/albums/22814/homepage_large.4984cf76.jpg', title: 'This Unruly Mess I\'ve made', artist: 'Macklemore & Ryan Lewis'},
       ],
-      searchQuery: '',
     }
-  },
-
-  _getFilteredMusic() {
-    // A standard lodash filter to search and filter in our music array
-    if (this.state.searchQuery) {
-      return _.filter(this.state.music, (item) => {
-        // build a case insensitive regex out of the searchQuery
-        var regex = new RegExp(this.state.searchQuery, 'gi');
-        // .. which we use to search on artist and title, and return true when we find a match. Lodash will then add this item to the returned array from _.filter.
-        return item.title.search(regex) > -1 || item.artist.search(regex) > -1;
-      })
-    }
-    return this.state.music
   },
 
   _handleAddMusic(item) {
@@ -42,8 +28,7 @@ var App = React.createClass({
     return (
       <div className="app-container">
         <h1>The music app</h1>
-        <input className="margin-large-bottom" type="text" placeholder="search" onChange={(e) => this.setState({searchQuery: e.target.value})} />
-        <MusicSummary musicList={this._getFilteredMusic()} />
+        <MusicSummary musicList={this.state.music} />
         <MusicForm onAddMusic={this._handleAddMusic}/>
       </div>
     )
@@ -90,6 +75,7 @@ var MusicSummaryItem = function(props) {
     </div>
   )
 }
+
 
 MusicSummaryItem.propTypes = {
   imageUrl: React.PropTypes.string,

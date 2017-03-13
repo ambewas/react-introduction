@@ -11,40 +11,15 @@ var App = React.createClass({
         {imageUrl: 'http://images.rapgenius.com/beb23feb3d0be493ef446e5a7abf61a2.600x600x1.jpg', title: 'Manon', artist: 'De Jeugd Van Tegenwoordig'},
         {imageUrl: 'http://cdn3.pitchfork.com/albums/22814/homepage_large.4984cf76.jpg', title: 'This Unruly Mess I\'ve made', artist: 'Macklemore & Ryan Lewis'},
       ],
-      searchQuery: '',
     }
-  },
-
-  _getFilteredMusic() {
-    // A standard lodash filter to search and filter in our music array
-    if (this.state.searchQuery) {
-      return _.filter(this.state.music, (item) => {
-        // build a case insensitive regex out of the searchQuery
-        var regex = new RegExp(this.state.searchQuery, 'gi');
-        // .. which we use to search on artist and title, and return true when we find a match. Lodash will then add this item to the returned array from _.filter.
-        return item.title.search(regex) > -1 || item.artist.search(regex) > -1;
-      })
-    }
-    return this.state.music
-  },
-
-  _handleAddMusic(item) {
-    // this function will be called when clicking on the add button in the form (see below)
-    // Simply add the incoming item to the music array on our App state.
-    var music = this.state.music;
-    music.push(item);
-    this.setState({
-      music: music
-    })
   },
 
   render() {
     return (
       <div className="app-container">
         <h1>The music app</h1>
-        <input className="margin-large-bottom" type="text" placeholder="search" onChange={(e) => this.setState({searchQuery: e.target.value})} />
-        <MusicSummary musicList={this._getFilteredMusic()} />
-        <MusicForm onAddMusic={this._handleAddMusic}/>
+        <MusicSummary musicList={this.state.music} />
+        <MusicForm />
       </div>
     )
   }
@@ -91,6 +66,7 @@ var MusicSummaryItem = function(props) {
   )
 }
 
+
 MusicSummaryItem.propTypes = {
   imageUrl: React.PropTypes.string,
   title: React.PropTypes.string,
@@ -116,15 +92,6 @@ var MusicForm = React.createClass({
     return emptyState;
   },
 
-  _validateForm() {
-    // if we have filled out each value, it's valid.
-    // imageurl is not required, and will fall back to a default
-    var { title, artist } = this.state;
-    this.setState({
-      pristine: title && artist
-    })
-  },
-
   _handleChange(e) {
     // set the appropriate values to the appropriate keys
     // on our music object which resides in local state.
@@ -136,32 +103,23 @@ var MusicForm = React.createClass({
     }, this._validateForm);
   },
 
-  _handleSubmit() {
-    // check if the form is valid (i.e. all necessary fields are completed)
-    if (this.state.pristine) {
-      // call our callback function on the parent, with a new music item
-      this.props.onAddMusic(this.state);
-      // then clear state again so the form is cleared
-      this.setState(emptyState);
-    }
-  },
 
   render() {
     return (
       <div className="music-form">
         <h1>Add your own music</h1>
-        <form onSubmit={this._handleSubmit}>
+        <form >
           <div className="flex">
             <input name={'title'} className="margin-small-right" type="text" placeholder="title" onChange={this._handleChange} value={this.state.title}/>
             <input name={'artist'} className="margin-small-left" type="text" placeholder="artist" onChange={this._handleChange} value={this.state.artist}/>
           </div>
           <input name={'imageUrl'} type="text" placeholder="album cover url" onChange={this._handleChange} value={this.state.imageUrl}/>
-          <button className={!this.state.pristine ? 'disabled' : null} onClick={this._handleSubmit} disabled={!this.state.pristine}>add to music</button>
         </form >
       </div>
     )
   }
 })
+
 
 ReactDOM.render(
   <App />,
