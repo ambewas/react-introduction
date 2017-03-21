@@ -1,6 +1,7 @@
 step 1:
 
 - APP global class & reactDOM.render to root, look at html, ...
+- explain the different react components you will encounter
 - render
   - container div, h1,
   - musicSummaryItem x1
@@ -10,13 +11,14 @@ step 1:
   - add prop types to music summary item
 
 - react concepts to explain:
+  - different react class invocation
   - render() lifecycle
   - jsx: html elements & instances of react classes
   - javascript in jsx --> {}
   - passing props to stateless functional component
   - inline style
   - ReactDOM.render()
-  - propTypes
+  - propType validation
   - className ipv class
 
 
@@ -28,8 +30,17 @@ step 2:
 
 
 - react concepts to explain:
+  - explain PROPS vs STATE
+    - sidetrack with clear example of a stepper button.
+    - too much state !== good.
+      - ok for things only that component needs to know about.
   - keys
+    - in a map vs sometimes trick to always rerender
   - executing functions in render
+    - can also be inline
+    - but preferred to move it out of render function, to keep things organised
+    - could also be moved to a functional component -- same principle.
+    - I like to keep these maps etc inside the class
   - getInitialState() lifecycle (briefly mention constructor)
   - other react lifecycles -- sidetrack, niet te lang op ingaan.
     - Mounting
@@ -135,7 +146,7 @@ step 5:
 
 
 
-advanced topics we did not cover that would usually be used in a production application (add links!!)
+advanced topics we did not cover that would usually be used in a production application (add links and short explanation in course itself)
 
 
   - refs & DOM manipulation (if it's unavoidable!)
@@ -144,7 +155,7 @@ advanced topics we did not cover that would usually be used in a production appl
   - stores, flux pattern / redux
     - getting / setting data server
     - communication between siblings
-  - react project setup (webpack, browserify)
+  - react project setup (webpack, browserify, create-react-app)
   - testing
   - HOCs & React.Children.Map etc
   - inline style & theming systems

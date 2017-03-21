@@ -37,8 +37,8 @@ var MusicSummaryItem = function(props) {
 
 MusicSummaryItem.propTypes = {
   imageUrl: React.PropTypes.string,
-  title: React.PropTypes.string,
-  artist: React.PropTypes.string,
+  title: React.PropTypes.string.isRequired,
+  artist: React.PropTypes.string.isRequired,
 }
 
 ReactDOM.render(
