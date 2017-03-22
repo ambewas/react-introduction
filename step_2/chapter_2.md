@@ -84,7 +84,7 @@ If you've got an array, you can call a map method on it. Basically what it does 
 What we're doing in this case, is telling the map a couple of things:
 
 - give each item in the array you're mapping over a name. Here we're simply calling it `item`.
-- call the second parameter (the index of the current item we're looking at) a name. We called it `i`
+- give the second parameter (the index of the current item we're looking at) a name. We called it `i`
 - then return a `<MusicSummaryItem>` component, with some props based on the current item we're looking at. For example: use the title of the current item.
 
 ### Keys
@@ -177,5 +177,5 @@ It's a (very) bad idea to directly modify it. If we would like to add an album (
 
 `this.state.music.push(album)`
 
-However, this will **not** cause your component to update. The proper way to mutate `this.state` is via the `this.setState()` method, which we'll use later on in this course.
+However, this will **not** cause your component to update. The proper way to mutate `this.state` is via the `this.setState()` method, which we'll use later on in this course - and go into detail about it as well.
 

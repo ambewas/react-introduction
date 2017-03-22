@@ -178,7 +178,7 @@ Right now, there are three kinds:
 - extending a `Component` class
 - a pure functional component.
 
-Take a look at `course_assets/react-components.html` to review the three different ways of writing a React component. Today, we'll mostly use the legacy `createClass` method, so we don't need to cover too much ES2015 concepts.
+Take a look at `course_assets/react-components.html` to review the three different ways of writing a React component. Today, we'll mostly use the legacy `createClass` method, so we don't need to cover too many ES2015 concepts.
 
 In reviewing these components, also note the following bit of code:
 

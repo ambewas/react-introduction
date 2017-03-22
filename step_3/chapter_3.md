@@ -32,7 +32,7 @@ The only difference is here, we're rendering some interactive html elements - in
 
 If you run this code in a browser right now, you'll see that you can type in the inputs as expected. Nothing's wrong and it all just works.
 
-That is because by not explicitely defining the `value` and `onChange` property on the inputs, we've created something called uncontrolled inputs. Basically, we're telling React: hey... let the browser handle this one, yeah?
+That is because by not explicitely defining the `value` and `onChange` property on the inputs, we've created something called `uncontrolled inputs`. Basically, we're telling React: hey... let the browser handle this one, yeah?
 
 All fine and dandy, but we there are a couple of reasons why we don't really want the browser to handle the user input without our interfering.
 
@@ -133,7 +133,7 @@ That's because we haven't actually defined what should happen `onChange`. Let's 
   },
 ```
 
-`_handleChange` receives an event `e` as it's argument. We can use this to capture the different input values, and save them on the component state.
+`_handleChange` receives an event `e` as the first argument. We can use this to capture the different input values, and save them on the component state.
 
 Remember, to mutate state, you need to use the `this.setState()` method and pass in a new state object as the first parameter.
 

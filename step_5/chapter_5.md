@@ -1,9 +1,9 @@
-# Chapter 3 - form validation, submitting, callback props
+# Chapter 5 - filtering values
 
 In chapter 4 we finished up our form, and we're now able to add music albums to our app.
 
 In this chapter, we'll be adding a basic filtering functionality, so we can search for any album.
-To finish up this course, this chapter also contains some advanced topic that are beyond the scope of this introduction to React. Feel free (and encouraged) to explore these concepts in your own time.
+
 
 ## adding a filter
 
