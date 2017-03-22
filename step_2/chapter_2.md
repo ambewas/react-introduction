@@ -24,7 +24,7 @@ Something that looks like this:
 ```
 
 
-We'll rewrite some parts of our application to more resemble a real life app that can handle and display arrays of data.
+We'll rewrite some parts of our application to resemble more closely a real life app that can handle and display arrays of data.
 
 ## Mapping
 
@@ -68,6 +68,8 @@ This method will eventually return an array of React Components, by mapping over
 
 Let's take a little step back and look at `map` first, and what it is - you'll be using it a lot if you're working in React, but it's a very useful tool in your JS toolbelt regardless.
 
+React -- by nature -- follows a declarative paradigm. In contrast to (for example) jQuery, which follows an imperative paradigm. This means we have to adjust the way we think about building applications. We no longer tell the computer *how* to do things, we tell the computer *what* to do. The `map` function constructs an array based on the function we pass it. We don't tell the computer *how* to construct this array. We just tell it *what* we want in this array. 
+
 If you've got an array, you can call a map method on it. Basically what it does is it loops over every item in the array, and applies some sort of function to it. This function, describing what should happen with each item, is provided as the first argument of the `map` method:
 
 ```
@@ -87,16 +89,18 @@ What we're doing in this case, is telling the map a couple of things:
 - call the second parameter (the index of the current item we're looking at) a name. We called it `i`
 - then return a `<MusicSummaryItem>` component, with some props based on the current item we're looking at. For example: use the title of the current item.
 
+
 ### Keys
 
 Notice there's some prop we haven't defined or used before here in the `<MusicSummaryItem>`: `key`.
 
-Key is a prop you can always add to any react component or html element in React. It is the way React can keep track of which elements have been updated, to keep the DOM diffing algorithm efficient and fast.
+Key is a prop you can always add to any React component or HTML element in React. It is the way React can keep track of which elements have been updated, to keep the DOM diffing algorithm efficient and fast.
 
-For now, it's enough to know that if you're creating components in a loop (such as with this `map` method we used here), you always need to give each item a unique key. Usually, you'd go with some sort of an ID - but for our purposes, the index works well.
+For now, it's enough to know that if you're creating components in a loop (such as with this `map` method we used here), you always need to give each item a unique key. Usually (and ideally), you'd go with some sort of an ID - but for our purposes, the index works well.
 
 
 ## Initial state
+
 Now, we've created this `MusicSummary` component, but haven't actually added it to our application. Let's do that now, and we'll add in some code to provide state to our App as well, and talk a little bit about that.
 
 ```
@@ -123,7 +127,7 @@ var App = React.createClass({
 });
 ```
 
-So what we did:
+We:
 
 - replaced the `MusicSummaryItem` with `MusicSummary`, and passed in this.state.music as the musicList prop
 - added a method `getInitialState`
@@ -147,7 +151,7 @@ There are three stages in the life of a React component:
 
 - Mounting
   - These methods are called when an instance of a component is being created and inserted into the DOM:
-    - constructor() -- or getInitialState()
+    - getInitialState() (or constructor() when extending Component)
     - componentWillMount()
     - render()
     - componentDidMount()
