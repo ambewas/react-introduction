@@ -1,6 +1,6 @@
 # Chapter 5 - filtering values
 
-In chapter 4 we finished up our form, and we're now able to add music albums to our app.
+In chapter 4 we finished up our form, and we are now able to add music albums to our app.
 
 In this chapter, we'll be adding a basic filtering functionality, so we can search for any album.
 
@@ -8,7 +8,7 @@ In this chapter, we'll be adding a basic filtering functionality, so we can sear
 ## adding a filter
 
 If we want to search for an album... we'll need a search field! So let's start by adding that.
-Since this is the only input in our `App` component, we can get away with just an inline onChange handler. This uses an ES2015 arrow function - but you could write it just the same way with traditional `function` notation.
+Since this is the only input in our `App` component, we can get away with just an inline `onChange` handler. This uses an ES2015 arrow function - but you could write it just the same way with traditional `function` notation.
 
 ```
 *in `App`*
@@ -24,7 +24,7 @@ Since this is the only input in our `App` component, we can get away with just a
   }
 ```
 
-In this onChange, we're actually setting a `searchQuery` on the state. So let's initialize it as well, as an empty string:
+In this onChange, we're actually setting a `searchQuery` property on the state. So let's initialize it as well, as an empty string:
 
 ```
   getInitialState() {
@@ -42,21 +42,20 @@ In this onChange, we're actually setting a `searchQuery` on the state. So let's 
 
 Now let's write the fun part. React doesn't come with a standard filter functionality - so we'll have to write our own filter implementation. While this sounds annoying, it actually allows us to write custom filters in a very explicit and clear way. We'll keep to a simple filter for this example though.
 
-Let's first look at the code, and disect it afterwards:
+Let's first look at the code, and dissect it afterwards:
 
 ```
 ...
   _getFilteredMusic() {
     // A standard lodash filter to search and filter in our music array
     if (this.state.searchQuery) {
-      // build a case insensitive regex out of the searchQuery
-      var regex = new RegExp(this.state.searchQuery, 'gi');
-      return _.filter(this.state.music, (item) => {
+      var query = this.state.searchQuery.toLowerCase();
+      return this.state.music.filter((item) => {
         // .. which we use to search on artist and title, and return true when we find a match. Lodash will then add this item to the returned array from _.filter.
-        return item.title.search(regex) > -1 || item.artist.search(regex) > -1;
+        return item.title.toLowerCase().indexOf(query) > -1 || item.artist.toLowerCase().indexOf(query) > -1;
       })
     }
-    return this.state.music
+    return this.state.music;
   },
 ...
 ```
@@ -65,11 +64,11 @@ The code is commented to explain the different steps, but let's step through it 
 
 First off, we only need to return a filtered state, if there's actually a searchQuery. Otherwise, return `this.state.music`.
 
-But if there is a query, we'll need to do something with it. Here we're using lodash's `filter` function -- but you could just as well write your own.
+But if there is a query, we'll need to do something with it. We are using Array's built in `filter` function.
 
-`_.filter` takes the array to filter as first argument, and then a filter function as the second argument. In this case, if the function applied to an item evaluates to `false`, the item is filtered out of the returned array. If it's `true`, we keep it.
+We apply `Array.filter` to the music array pass it a function as the argument. In this case, if the function applied to an item evaluates to `false`, the item is filtered out of the returned array. If it's `true`, we keep it.
 
-With the `regex` we've created (so we can do case insensitive search), we look in either the title or the artist field of every album, and return true if our `searchQuery` was found in either one.
+We use a bare-bones check using `toLowerCase` and `indexOf` here to look in either the title or the artist field of every album, and return true if our `searchQuery` was found in either one. (A case-insensitive regex would probably be a safer and faster alternative.)
 
 The only thing left to do is actually calling `this._getFilteredMusic` in our render function, so we can pass this array to our `MusicSummary`  component:
 
