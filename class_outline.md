@@ -121,7 +121,7 @@ step 4:
 
 - react concepts to explain:
   - form validation on change
-  - setState -> new render -> disable/enable button based on state
+  - onchange -> setState -> new render -> disable/enable button based on state
   - setState callback for form validation vs setTimeout
   - callback props
   - submit handler
@@ -140,11 +140,14 @@ step 5:
 
   - react concepts to explain:
     - again state manipulation
+    - all can be done with JS -- nothing magical about it
     - basic lodash filter
 
 
 
 
+
+(only on slides)
 
 advanced topics we did not cover that would usually be used in a production application (add links and short explanation in course itself)
 
