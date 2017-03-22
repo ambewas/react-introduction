@@ -27,7 +27,7 @@ var MusicForm = React.createClass({
 })
 ```
 
-Nothing special, this is just a react class as we've seen before.
+Nothing special, this is just a React class as we've seen before.
 The only difference is here, we're rendering some interactive html elements - inputs.
 
 If you run this code in a browser right now, you'll see that you can type in the inputs as expected. Nothing's wrong and it all just works.
@@ -140,12 +140,3 @@ Remember, to mutate state, you need to use the `this.setState()` method and pass
 What we're doing here is using some ES2015 trickery to actually capture and set the name of the changed input as the key, and the target.value as value. This way, we don't need to write a different change handler for every input, and our code can stay nice and DRY.
 
 If you run the code now, you should be able to type in the inputs again, as the values are being saved on the state.
-
-## synthetic events
-
-`onChange` may look like a native event handler, but it is actually a `synthetic event`. React's way of making ensuring cross browser functionality.
-
-If you wish to learn more about synthetic events, you can check out the official documentation here:
-https://facebook.github.io/react/docs/events.html
-
-That's all for now, in the next chapter we'll look at some form validation, and see how we can pass this form data back to our music list.
