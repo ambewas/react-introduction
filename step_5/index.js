@@ -16,16 +16,15 @@ var App = React.createClass({
   },
 
   _getFilteredMusic() {
-    // A standard lodash filter to search and filter in our music array
+    // A standard filter to search and filter in our music array
     if (this.state.searchQuery) {
-      // build a case insensitive regex out of the searchQuery
-      var regex = new RegExp(this.state.searchQuery, 'gi');
-      return _.filter(this.state.music, (item) => {
-        // .. which we use to search on artist and title, and return true when we find a match. Lodash will then add this item to the returned array from _.filter.
-        return item.title.search(regex) > -1 || item.artist.search(regex) > -1;
+      var query = this.state.searchQuery.toLowerCase();
+      return this.state.music.filter((item) => {
+        // .. which we use to search on artist and title, and return true when we find a match.
+        return item.title.toLowerCase().indexOf(query) > -1 || item.artist.toLowerCase().indexOf(query) > -1;
       })
     }
-    return this.state.music
+    return this.state.music;
   },
 
   _handleAddMusic(item) {

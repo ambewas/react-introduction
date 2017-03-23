@@ -14,7 +14,6 @@ In this first chapter, we'll be writing our first React component, render this t
     <script src="https://unpkg.com/react@latest/dist/react.js"></script>
     <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.17.2/lodash.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
   </head>
@@ -30,7 +29,7 @@ Here we set up an easy to use React playground app with at-compile JSX transpila
 The packages we will be using are:
 
 - [react](https://github.com/facebook/react): this package contains the core algorithms and API of the React library
-- [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom): contains helper functions for rendering React to the DOM. 
+- [react-dom](https://github.com/facebook/react/tree/master/packages/react-dom): contains helper functions for rendering React to the DOM.
 - [babel](https://babeljs.io/): Babel transpiles ES2015 and JSX (among others) to ES5.
 
 
@@ -250,7 +249,7 @@ React.createElement("div",{ className: "app-container" },
 
 *Tip: you can play around with JSX to JS compilation here: https://babeljs.io/repl*
 
-Once we've defined our `<App />` root component, we need to call `ReactDOM.render` to render it to the dom. 
+Once we've defined our `<App />` root component, we need to call `ReactDOM.render` to render it to the dom.
 
 As a side note: you might be wondering why we're calling `ReactDOM` here, and not `React` -- the simple reason being that the React workgroup at FB has decided to separate functionality in two packages.
 
